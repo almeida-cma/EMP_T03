@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Empreendedorismo Sustentável | Ética, RSE e Certificação</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #10b981;
+      --primary-dark: #059669;
+      --primary-light: #a7f3d0;
+      --secondary: #3b82f6;
+      --tertiary: #8b5cf6;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+
+    * { 
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Partículas de fundo */
+    #particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.1;
+      animation: float 20s infinite linear;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+
+    /* Cabeçalho */
+    header {
+      padding: 4rem 1.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.1), transparent 70%);
+      z-index: -1;
+    }
+
+    .title-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .main-title {
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .subtitle {
+      font-size: 1.3rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    /* Seções */
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 3rem 1.5rem;
+      position: relative;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 2px;
+    }
+
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
+      border-radius: 1.5rem;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(16, 185, 129, 0.2);
+      border-color: var(--primary);
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    /* Animações */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Elementos Interativos */
+    .btn {
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      border: none;
+      border-radius: 0.75rem;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      cursor: pointer;
+      color: white;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    /* Certificações */
+    .certifications-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .certification-card {
+      background: rgba(30, 41, 59, 0.7);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      border-left: 4px solid var(--primary);
+      transition: all 0.3s ease;
+    }
+
+    .certification-card:hover {
+      background: rgba(16, 185, 129, 0.1);
+      transform: translateX(5px);
+    }
+
+    /* Código de Conduta Builder */
+    .code-builder {
+      background: rgba(30, 41, 59, 0.8);
+      border-radius: 1rem;
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    /* Estilos para os steps corrigidos */
+    .step-indicator {
+      display: flex;
+      justify-content: space-between;
+      margin: 2rem 0;
+      position: relative;
+      padding: 0 1rem;
+    }
+
+    .step-indicator::before {
+      content: '';
+      position: absolute;
+      top: 35px;
+      left: 10%;
+      width: 80%;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: 1;
+    }
+
+    .step {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      position: relative;
+      z-index: 2;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .step.active {
+      background: var(--primary);
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+    }
+
+    .step.completed {
+      background: var(--secondary);
+    }
+
+    .step:hover:not(.active) {
+      background: rgba(16, 185, 129, 0.3);
+      transform: translateY(-5px);
+    }
+
+    /* Casos Reais */
+    .case-study {
+      background: rgba(30, 41, 59, 0.6);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-left: 4px solid;
+      transition: all 0.3s ease;
+    }
+
+    .case-study.positive {
+      border-left-color: var(--primary);
+    }
+
+    .case-study.negative {
+      border-left-color: var(--danger);
+    }
+
+    .case-study:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .main-title {
+        font-size: 2.2rem;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .step-indicator {
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+      }
+      
+      .step-indicator::before {
+        display: none;
+      }
+      
+      .step {
+        width: 60px;
+        height: 60px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .step {
+        width: 50px;
+        height: 50px;
+        font-size: 0.9rem;
+      }
+      
+      .step span[style*="font-size: 1.5rem"] {
+        font-size: 1.2rem !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Partículas de fundo -->
+  <div id="particles"></div>
+
+  <!-- Cabeçalho -->
+  <header>
+    <div class="header-bg"></div>
+    <div class="title-container">
+      <h1 class="main-title">Empreendedorismo Sustentável</h1>
+      <p class="subtitle">Ética, Responsabilidade Social e Certificação Socioambiental</p>
+      <p style="color: var(--muted); max-width: 700px; margin: 0 auto;">
+        Construa negócios que prosperam enquanto fazem o bem para sociedade e planeta
+      </p>
+    </div>
+  </header>
+
+  <!-- Seção 1: Triângulo Ético SIMPLIFICADO -->
+  <section>
+    <h2 class="section-title fade-in">⚖️ Ética no Empreendedorismo</h2>
+    <p class="fade-in" style="margin-bottom: 2rem;">Entenda a diferença entre Moral, Ética e Lei:</p>
+    
+    <!-- Versão simplificada - grid 3 colunas -->
+    <div class="grid fade-in" style="margin-bottom: 2rem;">
+      <div class="card" onclick="showInfo('moral')" style="cursor: pointer; text-align: center;">
+        <div class="card-icon">👥</div>
+        <h3>MORAL</h3>
+        <p>Valores coletivos da sociedade</p>
+        <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(59,130,246,0.1); border-radius: 0.5rem;">
+          <p style="font-size: 0.9rem; margin: 0;"><strong>Coletivo</strong> • Varia por cultura</p>
+        </div>
+      </div>
+      
+      <div class="card" onclick="showInfo('ethics')" style="cursor: pointer; text-align: center;">
+        <div class="card-icon">🧠</div>
+        <h3>ÉTICA</h3>
+        <p>Exercício consciente da moral</p>
+        <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(16,185,129,0.1); border-radius: 0.5rem;">
+          <p style="font-size: 0.9rem; margin: 0;"><strong>Individual</strong> • Reflexão pessoal</p>
+        </div>
+      </div>
+      
+      <div class="card" onclick="showInfo('law')" style="cursor: pointer; text-align: center;">
+        <div class="card-icon">⚖️</div>
+        <h3>LEI</h3>
+        <p>Regras formalmente estabelecidas</p>
+        <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(239,68,68,0.1); border-radius: 0.5rem;">
+          <p style="font-size: 0.9rem; margin: 0;"><strong>Obrigatório</strong> • Sanções definidas</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Setas conectando (opcional, mais simples) -->
+    <div style="display: flex; justify-content: center; align-items: center; margin: 2rem 0;">
+      <div style="text-align: center; position: relative;">
+        <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+          <div style="padding: 0.5rem 1rem; background: rgba(59,130,246,0.2); border-radius: 0.5rem; font-weight: bold;">MORAL</div>
+          <div style="margin: 0 1rem; font-size: 1.5rem;">→</div>
+          <div style="padding: 0.5rem 1rem; background: rgba(16,185,129,0.2); border-radius: 0.5rem; font-weight: bold;">ÉTICA</div>
+          <div style="margin: 0 1rem; font-size: 1.5rem;">→</div>
+          <div style="padding: 0.5rem 1rem; background: rgba(239,68,68,0.2); border-radius: 0.5rem; font-weight: bold;">LEI</div>
+        </div>
+        <p style="font-size: 0.9rem; color: var(--muted);">Fluxo: Valores sociais → Reflexão pessoal → Regras formais</p>
+      </div>
+    </div>
+    
+    <div class="grid" style="margin-top: 1rem;">
+      <div class="card fade-in">
+        <div class="card-icon">⚠️</div>
+        <h3>Desvios Éticos Comuns</h3>
+        <ul style="margin-top: 1rem;">
+          <li>Suborno a fiscais</li>
+          <li>Trabalho desumano</li>
+          <li>Produtos de baixa qualidade</li>
+          <li>Propagandas enganosas</li>
+          <li>Concorrência desleal</li>
+        </ul>
+        <div style="margin-top: 1rem; padding: 1rem; background: rgba(239,68,68,0.1); border-radius: 0.5rem;">
+          <p style="font-size: 0.9rem; margin: 0;"><strong>Custo:</strong> 2,6 trilhões USD/ano (5% do PIB mundial)</p>
+        </div>
+      </div>
+      
+      <div class="card fade-in">
+        <div class="card-icon">✅</div>
+        <h3>Como Implementar Ética</h3>
+        <ol style="margin-top: 1rem; padding-left: 1.2rem;">
+          <li>Planejar desde o início</li>
+          <li>Estabelecer diretrizes claras</li>
+          <li>Monitorar continuamente</li>
+          <li>Promover cultura ética</li>
+          <li>Treinar constantemente</li>
+        </ol>
+        <button class="btn" style="margin-top: 1rem; width: 100%;" onclick="showEthicsExamples()">Ver Exemplos Práticos</button>
+      </div>
+      
+      <div class="card fade-in">
+        <div class="card-icon">📜</div>
+        <h3>Lei Anticorrupção</h3>
+        <p>Decreto 8.420/2015 regulamenta a Lei Anticorrupção brasileira</p>
+        <ul style="margin-top: 1rem;">
+          <li>Aplica-se a todas empresas</li>
+          <li>Estabelece parâmetros de integridade</li>
+          <li>Inclui micro e pequenas empresas</li>
+          <li>Incentiva práticas éticas</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção 2: Responsabilidade Social -->
+  <section>
+    <h2 class="section-title fade-in">🤝 Responsabilidade Social Empresarial</h2>
+    
+    <div class="card fade-in" style="margin-bottom: 2rem;">
+      <h3>Definição (Instituto ETHOS)</h3>
+      <p style="margin: 1rem 0; font-style: italic; padding: 1rem; background: rgba(16,185,129,0.1); border-radius: 0.5rem;">
+        "Forma de gestão que se define pela relação ética e transparente da empresa com todos os públicos, estabelecendo metas que impulsionem o desenvolvimento sustentável da sociedade."
+      </p>
+    </div>
+    
+    <div class="grid fade-in">
+      <div class="card">
+        <div class="card-icon">👥</div>
+        <h3>Plural</h3>
+        <p>Prestar contas a múltiplos stakeholders:</p>
+        <ul style="margin-top: 1rem;">
+          <li>Funcionários</li>
+          <li>Comunidade</li>
+          <li>Meio Ambiente</li>
+          <li>Governo</li>
+          <li>Mídia</li>
+        </ul>
+      </div>
+      
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <h3>Distributiva</h3>
+        <p>Aplicar-se a toda cadeia produtiva:</p>
+        <ul style="margin-top: 1rem;">
+          <li>Responsabilizar fornecedores</li>
+          <li>Estender códigos de ética</li>
+          <li>Avaliar processo completo</li>
+          <li>Produto final responsável</li>
+        </ul>
+      </div>
+      
+      <div class="card">
+        <div class="card-icon">🌱</div>
+        <h3>Sustentável</h3>
+        <p>Anda de mãos dadas com sustentabilidade:</p>
+        <ul style="margin-top: 1rem;">
+          <li>Prevenir riscos futuros</li>
+          <li>Parcerias duradouras</li>
+          <li>Fortalecer imagem</li>
+          <li>Crescimento orientado</li>
+        </ul>
+      </div>
+      
+      <div class="card">
+        <div class="card-icon">🔍</div>
+        <h3>Transparente</h3>
+        <p>Divulgação completa:</p>
+        <ul style="margin-top: 1rem;">
+          <li>Relatórios anuais</li>
+          <li>Desempenho social</li>
+          <li>Impacto ambiental</li>
+          <li>Tendendo a compulsório</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção 3: Investimento Social Privado -->
+  <section>
+    <h2 class="section-title fade-in">💰 Investimento Social Privado</h2>
+    
+    <div class="grid fade-in">
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <h3>O Que É?</h3>
+        <p>Alocação voluntária e planejada de recursos privados para projetos de interesse público.</p>
+        <div style="margin-top: 1rem; padding: 1rem; background: rgba(59,130,246,0.1); border-radius: 0.5rem;">
+          <p style="font-size: 0.9rem; margin: 0;"><strong>Não é:</strong> assistencialismo nem caridade simples</p>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <h3>Dados (GIFE)</h3>
+        <div style="margin-top: 1rem;">
+          <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
+            <div style="width: 80%; height: 20px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden;">
+              <div style="width: 79%; height: 100%; background: var(--primary);"></div>
+            </div>
+            <span style="margin-left: 1rem; font-weight: bold;">79%</span>
+          </div>
+          <p style="font-size: 0.9rem;">Implementam estratégias específicas</p>
+          
+          <div style="display: flex; align-items: center; margin: 1rem 0 0.5rem 0;">
+            <div style="width: 80%; height: 20px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden;">
+              <div style="width: 91.7%; height: 100%; background: var(--secondary);"></div>
+            </div>
+            <span style="margin-left: 1rem; font-weight: bold;">91.7%</span>
+          </div>
+          <p style="font-size: 0.9rem;">Avaliam resultados regularmente</p>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-icon">👨‍🏫</div>
+        <h3>Características</h3>
+        <ul style="margin-top: 1rem;">
+          <li>Impacto positivo mensurável</li>
+          <li>Monitoramento contínuo</li>
+          <li>Profissionais qualificados</li>
+          <li>Fortalece terceiro setor</li>
+          <li>Expectativa de resultados</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção 4: Certificações -->
+  <section>
+    <h2 class="section-title fade-in">🏆 Certificação Socioambiental</h2>
+    <p class="fade-in">Selos que atestam boas práticas e melhoram a imagem empresarial:</p>
+    
+    <div class="certifications-grid fade-in">
+      <div class="certification-card">
+        <h4 style="color: var(--secondary); margin-bottom: 0.5rem;">Selo Empresa Amiga da Criança</h4>
+        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Criador:</strong> Fundação Abrinq</p>
+        <p style="font-size: 0.9rem;"><strong>Foco:</strong> Combate ao trabalho infantil</p>
+      </div>
+      
+      <div class="certification-card">
+        <h4 style="color: var(--primary); margin-bottom: 0.5rem;">ISO 14000</h4>
+        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Criador:</strong> International Organization for Standardization</p>
+        <p style="font-size: 0.9rem;"><strong>Foco:</strong> Gestão ambiental</p>
+      </div>
+      
+      <div class="certification-card">
+        <h4 style="color: var(--tertiary); margin-bottom: 0.5rem;">AA1000</h4>
+        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Criador:</strong> Institute of Social and Ethical Accountability</p>
+        <p style="font-size: 0.9rem;"><strong>Foco:</strong> Relação com stakeholders (anual)</p>
+      </div>
+      
+      <div class="certification-card">
+        <h4 style="color: var(--warning); margin-bottom: 0.5rem;">SA8000</h4>
+        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Criador:</strong> CEPAA</p>
+        <p style="font-size: 0.9rem;"><strong>Foco:</strong> Relações trabalhistas e direitos humanos</p>
+      </div>
+    </div>
+    
+    <div class="card fade-in" style="margin-top: 2rem;">
+      <h3>Vantagens das Certificações</h3>
+      <div class="grid" style="grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1rem;">
+        <div style="display: flex; align-items: center;">
+          <div style="width: 30px; height: 30px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; color: white;">✓</div>
+          <span>Vantagem competitiva</span>
+        </div>
+        <div style="display: flex; align-items: center;">
+          <div style="width: 30px; height: 30px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; color: white;">✓</div>
+          <span>Atendimento a demandas</span>
+        </div>
+        <div style="display: flex; align-items: center;">
+          <div style="width: 30px; height: 30px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; color: white;">✓</div>
+          <span>Reformulação interna</span>
+        </div>
+        <div style="display: flex; align-items: center;">
+          <div style="width: 30px; height: 30px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; color: white;">✓</div>
+          <span>Fortalecimento da marca</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção 5: Código de Conduta - VERSÃO CORRIGIDA -->
+  <section>
+    <h2 class="section-title fade-in">📄 Código de Conduta / Ética</h2>
+    
+    <div class="card fade-in" style="margin-bottom: 2rem;">
+      <h3>O Que É?</h3>
+      <p>Documento formal que encapsula princípios e valores da organização, servindo como guia normativo para comportamento uniforme.</p>
+      
+      <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem;">
+        <div style="padding: 0.5rem 1rem; background: rgba(16,185,129,0.1); border-radius: 0.5rem;">Código de Conduta Ética</div>
+        <div style="padding: 0.5rem 1rem; background: rgba(16,185,129,0.1); border-radius: 0.5rem;">Código de Conduta Moral</div>
+        <div style="padding: 0.5rem 1rem; background: rgba(16,185,129,0.1); border-radius: 0.5rem;">Código de Ética</div>
+      </div>
+    </div>
+    
+    <!-- Builder de Código de Conduta - VERSÃO CORRIGIDA -->
+    <div class="code-builder fade-in">
+      <h3>Construa Seu Código em 7 Passos</h3>
+      
+      <!-- Indicador de passos - versão simplificada -->
+      <div class="step-indicator" id="stepIndicator">
+        <!-- Será preenchido por JavaScript -->
+      </div>
+      
+      <div id="stepContent" style="min-height: 250px; margin-top: 2rem;">
+        <!-- Conteúdo será preenchido por JavaScript -->
+      </div>
+      
+      <div style="display: flex; justify-content: space-between; margin-top: 2rem;">
+        <button class="btn btn-outline" onclick="prevStep()" id="prevBtn" style="display: none;">
+          ← Passo Anterior
+        </button>
+        <button class="btn" onclick="nextStep()" id="nextBtn">
+          Próximo Passo →
+        </button>
+      </div>
+    </div>
+    
+    <!-- Benefícios -->
+    <div class="grid fade-in" style="margin-top: 3rem;">
+      <div class="card">
+        <div class="card-icon">👔</div>
+        <h3>Mais Profissionalismo</h3>
+        <p>Padronização de decisões morais e atendimento uniforme.</p>
+      </div>
+      
+      <div class="card">
+        <div class="card-icon">🛡️</div>
+        <h3>Eleva Segurança</h3>
+        <p>Clareza sobre limites aceitáveis e ambiente harmônico.</p>
+      </div>
+      
+      <div class="card">
+        <div class="card-icon">🌟</div>
+        <h3>Melhora Imagem</h3>
+        <p>Prevenção de comportamentos prejudiciais e fidelização.</p>
+      </div>
+      
+      <div class="card">
+        <div class="card-icon">👥</div>
+        <h3>Simplifica Gestão</h3>
+        <p>Parâmetros claros para gerir pessoas e satisfação.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção 6: Casos Reais -->
+  <section>
+    <h2 class="section-title fade-in">📰 Casos Reais</h2>
+    
+    <div class="grid fade-in">
+      <div class="case-study negative">
+        <h3>⚠️ Zara - Trabalho Análogo à Escravidão</h3>
+        <p><strong>Problema:</strong> Oficinas de costura com condições desumanas</p>
+        <p><strong>Consequência:</strong> Danos à reputação global e processos</p>
+        <p><strong>Lição:</strong> Responsabilidade por toda cadeia produtiva</p>
+      </div>
+      
+      <div class="case-study negative">
+        <h3>⚠️ Pizza Hut (Brasil) - Comportamento Preconceituoso</h3>
+        <p><strong>Problema:</strong> Funcionário agiu de forma inadequada com criança com paralisia cerebral</p>
+        <p><strong>Consequência:</strong> Boicote massivo nas redes sociais</p>
+        <p><strong>Lição:</strong> Treinamento em diversidade e inclusão é essencial</p>
+      </div>
+    </div>
+    
+    <div class="grid fade-in" style="margin-top: 1.5rem;">
+      <div class="case-study positive">
+        <h3>✅ Apple - Código para Fornecedores</h3>
+        <p><strong>Solução:</strong> Código de Conduta aplicado a toda cadeia</p>
+        <p><strong>Resultado:</strong> Padronização de condições de trabalho</p>
+        <p><strong>Frase:</strong> "Deixar o mundo melhor do que encontramos"</p>
+      </div>
+      
+      <div class="case-study positive">
+        <h3>✅ Google - "Don't Be Evil"</h3>
+        <p><strong>Solução:</strong> Código criado com funcionários, linguagem informal</p>
+        <p><strong>Resultado:</strong> Cultura de falar sobre problemas éticos</p>
+        <p><strong>Evolução:</strong> "Do the right thing" (faça a coisa certa)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção 7: Pequenas Empresas -->
+  <section>
+    <h2 class="section-title fade-in">🏢 E as Pequenas Empresas?</h2>
+    
+    <div class="card fade-in">
+      <h3 style="text-align: center;">📌 Verdade Importante</h3>
+      <p style="text-align: center; font-size: 1.2rem; margin: 1.5rem 0;">
+        Códigos de ética <strong>não são obrigatórios</strong>, mas são <strong style="color: var(--primary);">úteis para todos os portes</strong>
+      </p>
+      
+      <div class="grid" style="grid-template-columns: repeat(2, 1fr); margin-top: 2rem;">
+        <div>
+          <h4>✅ Vantagens para Pequenas Empresas</h4>
+          <ul style="margin-top: 1rem;">
+            <li>Facilita gestão e decisões</li>
+            <li>Padroniza atendimento</li>
+            <li>Clareza sobre comportamento</li>
+            <li>Previne problemas futuros</li>
+            <li>Constrói reputação desde o início</li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4>🚀 Comece Pequeno</h4>
+          <ul style="margin-top: 1rem;">
+            <li>Documento de 1-2 páginas</li>
+            <li>Foco em valores essenciais</li>
+            <li>Envolva toda equipe</li>
+            <li>Revise a cada 6 meses</li>
+            <li>Cresça com a empresa</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção 8: Checklist Final -->
+  <section>
+    <h2 class="section-title fade-in">✅ Checklist para Implementação</h2>
+    
+    <div class="card fade-in">
+      <h3>Para Empreendedores que Querem Ser Éticos</h3>
+      
+      <div id="checklist" style="margin-top: 1.5rem;">
+        <!-- Checklist será preenchido por JavaScript -->
+      </div>
+      
+      <div style="text-align: center; margin-top: 2rem;">
+        <button class="btn" onclick="generateReport()" style="padding: 1rem 3rem;">
+          <i class="fas fa-download" style="margin-right: 10px;"></i> Gerar Relatório de Sustentabilidade
+        </button>
+      </div>
+      
+      <div id="reportOutput" style="display: none; margin-top: 2rem; padding: 1.5rem; background: rgba(0,0,0,0.2); border-radius: 0.75rem;">
+        <h3>Seu Relatório de Sustentabilidade</h3>
+        <div id="reportContent"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer style="text-align: center; padding: 3rem 1rem; color: var(--muted); font-size: 0.9rem; border-top: 1px solid rgba(16,185,129,0.2);">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <p><strong>Empreendedorismo Sustentável</strong> - Ética, Responsabilidade Social e Certificação Socioambiental</p>
+      <p style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.7;">
+        Desenvolvido para a disciplina de Empreendedorismo | Tema 03
+      </p>
+      <div style="margin-top: 2rem;">
+        <p style="font-size: 0.75rem; opacity: 0.5;">
+          "O negócio que prospera no século XXI não é o que tem o produto mais barato, mas o que tem os valores mais caros."
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Inicializar partículas de fundo
+    function initParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 25;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        const size = Math.random() * 4 + 1;
+        const x = Math.random() * 100;
+        const y = Math.random() * 100;
+        const delay = Math.random() * 20;
+        const duration = Math.random() * 10 + 15;
+        
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${x}%`;
+        particle.style.top = `${y}%`;
+        particle.style.animationDelay = `${delay}s`;
+        particle.style.animationDuration = `${duration}s`;
+        
+        // Cores variadas baseadas no tema
+        const colors = ['#10b981', '#3b82f6', '#8b5cf6', '#f59e0b'];
+        particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+        
+        particlesContainer.appendChild(particle);
+      }
+    }
+    
+    // Animações de entrada
+    function initScrollAnimations() {
+      const fadeElements = document.querySelectorAll('.fade-in');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      fadeElements.forEach(el => observer.observe(el));
+    }
+    
+    // Informações do triângulo ético
+    function showInfo(type) {
+      const info = {
+        moral: "MORAL: Conjunto de valores, normas e noções do que é certo/errado dentro de uma sociedade. É construída coletivamente e varia entre culturas.",
+        ethics: "ÉTICA: Exercício consciente da moral. Reflete sobre situações e decide o que é certo fazer. Não é lei, mas orienta comportamento responsável.",
+        law: "LEI: Regras formalmente estabelecidas e sancionadas pelo Estado. Tem caráter obrigatório e punições definidas para quem as descumpre."
+      };
+      
+      alert(info[type] || "Informação não disponível");
+    }
+    
+    // Exemplos de ética
+    function showEthicsExamples() {
+      const examples = [
+        "EXEMPLO 1: Um fornecedor oferece 'presente especial'. Código claro diz: presentes acima de R$50 devem ser recusados e comunicados.",
+        "EXEMPLO 2: Contratação de parentes. Código estabelece: parentes podem ser contratados apenas para cargos não subordinados uns aos outros.",
+        "EXEMPLO 3: Conflito de interesses. Funcionário deve declarar participação em empresas concorrentes ou fornecedoras."
+      ].join("\n\n");
+      
+      alert("EXEMPLOS PRÁTICOS DE ÉTICA:\n\n" + examples);
+    }
+    
+    // Builder de código de conduta - VERSÃO COMPLETA
+    let currentStep = 1;
+    const steps = [
+      {
+        number: 1,
+        title: "Selecione o Time",
+        icon: "👥",
+        content: `<h4><span style="color: var(--primary);">Passo 1:</span> Selecione o Time</h4>
+        <p><strong>Objetivo:</strong> Montar equipe responsável pela criação do código</p>
+        <ul>
+          <li><strong>Colaboradores exemplares</strong> (postura ética reconhecida)</li>
+          <li><strong>Lideranças estratégicas</strong> (definem prioridades da empresa)</li>
+          <li><strong>Advogado</strong> (para questões legais e trabalhistas)</li>
+          <li><strong>Representantes de diferentes áreas</strong> (visão multidisciplinar)</li>
+        </ul>
+        <div style="margin-top: 1rem; padding: 1rem; background: rgba(16,185,129,0.1); border-radius: 0.5rem;">
+          <p style="margin: 0; font-size: 0.9rem;"><strong>💡 Dica:</strong> Equipe muito grande dificulta consenso. Mantenha entre 5-8 pessoas.</p>
+        </div>`
+      },
+      {
+        number: 2,
+        title: "Colha Ideias",
+        icon: "💡",
+        content: `<h4><span style="color: var(--primary);">Passo 2:</span> Colha Ideias da Equipe</h4>
+        <p><strong>Objetivo:</strong> Capturar percepções e necessidades reais</p>
+        <ul>
+          <li><strong>Realize reuniões livres</strong> para brainstorm</li>
+          <li><strong>Pergunte:</strong> "O que não pode faltar no código?"</li>
+          <li><strong>Identifique dilemas éticos</strong> já enfrentados</li>
+          <li><strong>Descubra valores</strong> mais importantes para a equipe</li>
+          <li><strong>Designe um secretário</strong> para anotar todas as sugestões</li>
+        </ul>
+        <div style="margin-top: 1rem; padding: 1rem; background: rgba(16,185,129,0.1); border-radius: 0.5rem;">
+          <p style="margin: 0; font-size: 0.9rem;"><strong>💡 Dica:</strong> Inclua sugestões de todos os níveis hierárquicos.</p>
+        </div>`
+      },
+      {
+        number: 3,
+        title: "Consulte Referências",
+        icon: "📚",
+        content: `<h4><span style="color: var(--primary);">Passo 3:</span> Consulte Referências</h4>
+        <p><strong>Objetivo:</strong> Aprender com melhores práticas do mercado</p>
+        <ul>
+          <li><strong>Analise códigos</strong> de empresas referência (Apple, Google, Uber)</li>
+          <li><strong>Consulte legislações</strong> setoriais específicas</li>
+          <li><strong>Estude normas ISO</strong> e outras certificações</li>
+          <li><strong>Revise regras internas</strong> já existentes na empresa</li>
+          <li><strong>Pesquise códigos</strong> de empresas do mesmo porte/setor</li>
+        </ul>
+        <div style="margin-top: 1rem; padding: 1rem; background: rgba(16,185,129,0.1); border-radius: 0.5rem;">
+          <p style="margin: 0; font-size: 0.9rem;"><strong>💡 Dica:</strong> Não copie, mas inspire-se em estruturas e abordagens que funcionam.</p>
+        </div>`
+      },
+      {
+        number: 4,
+        title: "Monte o Documento",
+        icon: "✍️",
+        content: `<h4><span style="color: var(--primary);">Passo 4:</span> Monte o Documento</h4>
+        <p><strong>Objetivo:</strong> Criar o esboço inicial do código</p>
+        <ul>
+          <li><strong>Comece pelo básico</strong> - não precisa ser perfeito</li>
+          <li><strong>Foque na clareza</strong> e objetividade</li>
+          <li><strong>Use linguagem acessível</strong> para todos</li>
+          <li><strong>Estruture por temas</strong> ou seções lógicas</li>
+          <li><strong>Inclua exemplos práticos</strong> de aplicação</li>
+          <li><strong>Defina consequências</strong> para violações</li>
+        </ul>
+        <div style="margin-top: 1rem; padding: 1rem; background: rgba(16,185,129,0.1); border-radius: 0.5rem;">
+          <p style="margin: 0; font-size: 0.9rem;"><strong>💡 Dica:</strong> Melhor começar simples e evoluir depois. Versão 1.0 pode ter 3-5 páginas.</p>
+        </div>`
+      },
+      {
+        number: 5,
+        title: "Revise o Conteúdo",
+        icon: "🔍",
+        content: `<h4><span style="color: var(--primary);">Passo 5:</span> Revise o Conteúdo</h4>
+        <p><strong>Objetivo:</strong> Garantir qualidade e conformidade do documento</p>
+        <ul>
+          <li><strong>Revisão jurídica:</strong> Advogado verifica conformidade legal</li>
+          <li><strong>Revisão de linguagem:</strong> Revisor ajusta clareza e estilo</li>
+          <li><strong>Aprovação final</strong> das lideranças e direção</li>
+          <li><strong>Teste de compreensão</strong> com grupo piloto de colaboradores</li>
+          <li><strong>Corrija ambiguidades</strong> e pontos confusos</li>
+          <li><strong>Valide com stakeholders</strong> chave</li>
+        </ul>
+        <div style="margin-top: 1rem; padding: 1rem; background: rgba(16,185,129,0.1); border-radius: 0.5rem;">
+          <p style="margin: 0; font-size: 0.9rem;"><strong>💡 Dica:</strong> Peça para 2-3 pessoas de fora da equipe lerem e darem feedback sobre clareza.</p>
+        </div>`
+      },
+      {
+        number: 6,
+        title: "Decida Onde Publicar",
+        icon: "🌐",
+        content: `<h4><span style="color: var(--primary);">Passo 6:</span> Decida Onde Publicar</h4>
+        <p><strong>Objetivo:</strong> Escolher estratégia de divulgação apropriada</p>
+        <ul>
+          <li><strong>Interno:</strong> Intranet, manual do colaborador, pasta compartilhada</li>
+          <li><strong>Externo:</strong> Site oficial, relatórios anuais (transparência)</li>
+          <li><strong>Misto:</strong> Versão resumida pública, versão completa interna</li>
+          <li><strong>Canais específicos:</strong> Onboarding, treinamentos, reuniões</li>
+          <li><strong>Formatos:</strong> PDF, página web, impresso, apresentação</li>
+        </ul>
+        <div style="margin-top: 1rem; padding: 1rem; background: rgba(16,185,129,0.1); border-radius: 0.5rem;">
+          <p style="margin: 0; font-size: 0.9rem;"><strong>💡 Dica:</strong> Grandes empresas tendem a publicar para mostrar compromisso com transparência.</p>
+        </div>`
+      },
+      {
+        number: 7,
+        title: "Comunique para Todos",
+        icon: "📢",
+        content: `<h4><span style="color: var(--primary);">Passo 7:</span> Comunique para Todos</h4>
+        <p><strong>Objetivo:</strong> Garantir que todos conheçam e compreendam o código</p>
+        <ul>
+          <li><strong>Treinamentos obrigatórios</strong> para todos os colaboradores</li>
+          <li><strong>Material de endomarketing</strong> (pôsteres, emails, newsletters)</li>
+          <li><strong>Apresentação oficial</strong> por líderes da empresa</li>
+          <li><strong>Inclua no onboarding</strong> de novos colaboradores</li>
+          <li><strong>Crie canais</strong> para dúvidas e denúncias</li>
+          <li><strong>Lideranças como exemplos</strong> de aplicação prática</li>
+          <li><strong>Revise periodicamente</strong> (sugestão: anual)</li>
+        </ul>
+        <div style="margin-top: 1rem; padding: 1rem; background: rgba(16,185,129,0.1); border-radius: 0.5rem;">
+          <p style="margin: 0; font-size: 0.9rem;"><strong>💡 Resultado:</strong> Código vivo na cultura organizacional, não apenas documento na gaveta.</p>
+        </div>`
+      }
+    ];
+
+    // Inicializar steps
+    function initSteps() {
+      const stepIndicator = document.getElementById('stepIndicator');
+      const stepContent = document.getElementById('stepContent');
+      
+      // Criar indicadores
+      stepIndicator.innerHTML = steps.map(step => `
+        <div class="step ${step.number === 1 ? 'active' : ''}" data-step="${step.number}">
+          <span style="font-size: 1.5rem;">${step.icon}</span>
+          <span style="display: block; font-size: 0.8rem; margin-top: 0.25rem;">${step.number}</span>
+        </div>
+      `).join('');
+      
+      // Conteúdo inicial
+      stepContent.innerHTML = steps[0].content;
+    }
+
+    // Funções de navegação
+    function nextStep() {
+      if (currentStep < steps.length) {
+        // Atualizar indicadores
+        document.querySelectorAll('.step').forEach(step => {
+          step.classList.remove('active');
+        });
+        
+        // Avançar passo
+        currentStep++;
+        document.querySelector(`.step[data-step="${currentStep}"]`).classList.add('active');
+        
+        // Atualizar conteúdo
+        document.getElementById('stepContent').innerHTML = steps[currentStep - 1].content;
+        
+        // Atualizar botões
+        document.getElementById('prevBtn').style.display = 'block';
+        
+        if (currentStep === steps.length) {
+          document.getElementById('nextBtn').innerHTML = 'Concluir ✓';
+          document.getElementById('nextBtn').onclick = function() {
+            alert('🎉 Parabéns! Seu código de conduta está pronto para implementação!\n\nPróximas ações:\n1. Salve este plano\n2. Monte sua equipe\n3. Comece pelo Passo 1');
+            resetSteps();
+          };
+        }
+      }
+    }
+
+    function prevStep() {
+      if (currentStep > 1) {
+        // Atualizar indicadores
+        document.querySelectorAll('.step').forEach(step => {
+          step.classList.remove('active');
+        });
+        
+        // Voltar passo
+        currentStep--;
+        document.querySelector(`.step[data-step="${currentStep}"]`).classList.add('active');
+        
+        // Atualizar conteúdo
+        document.getElementById('stepContent').innerHTML = steps[currentStep - 1].content;
+        
+        // Atualizar botões
+        if (currentStep === 1) {
+          document.getElementById('prevBtn').style.display = 'none';
+        }
+        
+        document.getElementById('nextBtn').innerHTML = 'Próximo Passo →';
+        document.getElementById('nextBtn').onclick = nextStep;
+      }
+    }
+
+    function resetSteps() {
+      currentStep = 1;
+      initSteps();
+      document.getElementById('prevBtn').style.display = 'none';
+      document.getElementById('nextBtn').innerHTML = 'Próximo Passo →';
+      document.getElementById('nextBtn').onclick = nextStep;
+    }
+    
+    // Checklist
+    function initChecklist() {
+      const checklistItems = [
+        "Desenvolvi um código de conduta claro",
+        "Comuniquei-o a todos os colaboradores",
+        "Estabeleci canais para denúncias éticas",
+        "Avalio fornecedores por critérios éticos",
+        "Publiquei um relatório de transparência",
+        "Busquei certificações relevantes",
+        "Implementei programa de investimento social",
+        "Realizo treinamentos regulares em ética",
+        "Monitorei o impacto social das operações",
+        "Engajei stakeholders nas decisões"
+      ];
+      
+      const checklistHTML = checklistItems.map((item, index) => `
+        <div style="display: flex; align-items: center; margin-bottom: 0.75rem; padding: 0.75rem; background: rgba(255,255,255,0.05); border-radius: 0.5rem;">
+          <input type="checkbox" id="check${index}" style="margin-right: 1rem; width: 20px; height: 20px; cursor: pointer;">
+          <label for="check${index}" style="cursor: pointer; flex-grow: 1;">${item}</label>
+        </div>
+      `).join('');
+      
+      document.getElementById('checklist').innerHTML = checklistHTML;
+    }
+    
+    // Gerar relatório
+    function generateReport() {
+      const checkboxes = document.querySelectorAll('#checklist input[type="checkbox"]');
+      const checkedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
+      const total = checkboxes.length;
+      const percentage = Math.round((checkedCount / total) * 100);
+      
+      let report = `<h4>Relatório de Sustentabilidade Empresarial</h4>`;
+      report += `<p><strong>Data:</strong> ${new Date().toLocaleDateString('pt-BR')}</p>`;
+      report += `<p><strong>Progresso Ético:</strong> ${checkedCount}/${total} (${percentage}%)</p>`;
+      
+      if (percentage >= 80) {
+        report += `<p style="color: var(--primary); font-weight: bold;">🎉 Excelente! Sua empresa tem forte compromisso ético.</p>`;
+      } else if (percentage >= 50) {
+        report += `<p style="color: var(--warning); font-weight: bold;">📈 Bom começo, mas há espaço para melhorias.</p>`;
+      } else {
+        report += `<p style="color: var(--danger); font-weight: bold;">⚠️ Atenção: É hora de priorizar a ética nos negócios.</p>`;
+      }
+      
+      report += `<hr style="margin: 1.5rem 0; border-color: rgba(255,255,255,0.1);">`;
+      report += `<h5>Próximos Passos Recomendados:</h5>`;
+      report += `<ul>`;
+      
+      if (checkedCount < 3) {
+        report += `<li>Comece criando um código de conduta básico (Passo 1 acima)</li>`;
+        report += `<li>Realize um treinamento inicial sobre ética empresarial</li>`;
+        report += `<li>Identifique os stakeholders mais importantes para seu negócio</li>`;
+      } else if (checkedCount < 7) {
+        report += `<li>Busque uma certificação adequada ao seu setor</li>`;
+        report += `<li>Desenvolva um programa simples de investimento social</li>`;
+        report += `<li>Comece a publicar relatórios de transparência</li>`;
+      } else {
+        report += `<li>Profissionalize seu programa de responsabilidade social</li>`;
+        report += `<li>Busque certificações internacionais (ISO, SA8000)</li>`;
+        report += `<li>Torne-se referência em ética no seu segmento</li>`;
+      }
+      
+      report += `</ul>`;
+      
+      document.getElementById('reportContent').innerHTML = report;
+      document.getElementById('reportOutput').style.display = 'block';
+      
+      // Scroll suave para o relatório
+      document.getElementById('reportOutput').scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    // Inicializar quando a página carregar
+    document.addEventListener('DOMContentLoaded', () => {
+      initParticles();
+      initScrollAnimations();
+      initChecklist();
+      initSteps(); // ← ADICIONAR ESTA LINHA
+    });
+  </script>
+</body>
+</html>
